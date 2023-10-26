@@ -1,20 +1,28 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>
-      Blank
+      IMC Calculate
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">Digite aqui seu peso:</ion-label>
+      <ion-input type="number" name="personWeight" [(ngModel)]="personWeight"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Digite aqui sua altura em centimetros:</ion-label>
+      <ion-input type="number" onkeypress="if(this.value.length==3) return false;" name="personHeight" [(ngModel)]="personHeight" (input)="validarAlturaInput($event)"></ion-input>
+    </ion-item>
+  </ion-list>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-button class="custom-button" expand="block" (click)="calcularIMC()">Calcular</ion-button>
+
+  <ion-card [ngClass]="classificationClass" *ngIf="result">
+    <ion-card-content>
+      Seu Indice de Massa Corporal é {{ IMC!.toFixed(2) }}. {{ classification }}
+    </ion-card-content>
+  </ion-card>
 </ion-content>
