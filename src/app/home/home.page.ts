@@ -5,71 +5,70 @@ import { Component } from '@angular/core';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class ImcPage {
-  personWeight: number | null;
-  personHeight: number | null;
-  heightInMeters: number | null;
-  IMC: number | null;
+export class BmiPage {
+  personWeight: number;
+  personHeight: number;
+  heightInMeters: number;
+  BMI: number;
   classification: string;
-  result: boolean;
-  classificationClass: string;
+  classificationCSS: string;
+  nullWeightErrorMessage: string;
+  nullHeightErrorMessage: string;
+  completeResult: boolean;
 
   constructor() {
-    this.personWeight = null;
-    this.personHeight = null;
-    this.heightInMeters = null;
-    this.IMC = null;
+    this.personWeight = 0;
+    this.personHeight = 0;
+    this.heightInMeters = 0;
+    this.BMI = 0;
     this.classification = "";
-    this.result = false;
-    this.classificationClass = "";
+    this.classificationCSS = "";
+    this.nullWeightErrorMessage = "";
+    this.nullHeightErrorMessage = "";
+    this.completeResult = false;
   }
 
   // Função para validar e filtrar a entrada de altura
-validarAlturaInput(event: any) {
-  const inputValue = event.target.value;
+heightInputValidate(event: any) {
+  const heightInputValue = event.target.value;
 
   // Remova quaisquer caracteres que não sejam dígitos
-  const numericValue = inputValue.replace(/[^0-9]/g, '');
+  const heightNumericValue = heightInputValue.replace(/[^0-9]/g, '');
 
   // Converter o valor para um número inteiro
-  this.personHeight = parseInt(numericValue, 10);
-
-  // Se o valor não for um número inteiro válido, definir a altura como nula
-  if (isNaN(this.personHeight)) {
-    this.personHeight = null;
-  }
+  this.personHeight = parseInt(heightNumericValue, 10);
 }
 
-  calcularIMC() {
+  bmiCalculate() {
     this.heightInMeters! = this.personHeight! / 100;
-    this.IMC = this.personWeight! / (this.heightInMeters! * this.heightInMeters!);
+    this.BMI = this.personWeight! / (this.heightInMeters! * this.heightInMeters!);
 
-    if (this.IMC >= 40) {
-      this.classification = "Obesidade Grau III";
-      this.classificationClass = "obesidade";
-    } else if (this.IMC >= 35) {
-      this.classification = "Obesidade Grau II";
-      this.classificationClass = "acima-do-peso";
-    } else if (this.IMC >= 30) {
-      this.classification = "Obesidade Grau I";
-      this.classificationClass = "acima-do-peso";
-    } else if (this.IMC >= 25) {
-      this.classification = "Acima do Peso";
-      this.classificationClass = "acima-do-peso";
-    } else if (this.IMC >= 18.5) {
-      this.classification = "Peso Normal";
-      this.classificationClass = "peso-normal";
-    } else if (this.IMC >= 17) {
-      this.classification = "Abaixo do Peso";
-      this.classificationClass = "abaixo-do-peso";
-    } else if (this.IMC < 16.9) {
-      this.classification = "Muito Abaixo do Peso";
-      this.classificationClass = "muito-abaixo-do-peso";
+    if (this.BMI >= 40) {
+      this.classification = "Class III Obesity";
+      this.classificationCSS = "ObesityStyle";
+    } else if (this.BMI >= 35) {
+      this.classification = "Class II Obesity";
+      this.classificationCSS = "ObesityStyle";
+    } else if (this.BMI >= 30) {
+      this.classification = "Class I Obesity";
+      this.classificationCSS = "OverweightStyle";
+    } else if (this.BMI >= 25) {
+      this.classification = "Overweight";
+      this.classificationCSS = "OverweightStyle";
+    } else if (this.BMI >= 18.5) {
+      this.classification = "Normal Weight";
+      this.classificationCSS = "NormalWeightStyle";
+    } else if (this.BMI >= 17) {
+      this.classification = "Underweight";
+      this.classificationCSS = "UnderWeightStyle";
+    } else if (this.BMI < 16.9) {
+      this.classification = "Very Underweight";
+      this.classificationCSS = "VeryUnderWeightStyle";
     } else {
       this.classification = "";
-      this.classificationClass = "";
+      this.classificationCSS = "";
     }
 
-    this.result = true;
+    this.completeResult = true;
   }
 }

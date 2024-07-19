@@ -10,13 +10,13 @@ ion-title {
   font-size: 24px;
   font-weight: bold;
   text-align: center;
-  margin-top: 20px;
+  
 }
 
 ion-input {
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 10px;
+  padding: 5px!important;
   margin-top: 10px;
 }
 
@@ -40,23 +40,23 @@ ion-card-content {
 }
 
 /* Estilos para a classificação do IMC */
-.obesidade {
+.ObesityStyle {
   background: #ff6347;
 }
 
-.acima-do-peso {
+.OverweightStyle {
   background: #ffaa00;
 }
 
-.peso-normal {
+.NormalWeightStyle {
   background: #00b22a;
 }
 
-.abaixo-do-peso {
+.UnderWeightStyle {
   background: #add8e6;
 }
 
-.muito-abaixo-do-peso {
+.VeryUnderWeightStyle {
   background: #a9a9a9;
 }
 .text-input:focus {

@@ -1,5 +1,5 @@
 {
-  "name": "imcApp",
+  "name": "BMI App",
   "integrations": {
     "capacitor": {}
   },

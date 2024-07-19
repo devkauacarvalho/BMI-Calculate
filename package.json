@@ -1,8 +1,8 @@
 {
-  "name": "imcApp",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "name": "BMI App",
+  "version": "1.1",
+  "author": "Kauã Carvalho",
+  "homepage": "https://github.com/devkauacarvalho/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -63,5 +63,5 @@
     "ts-node": "^8.3.0",
     "typescript": "~5.0.2"
   },
-  "description": "An Ionic project"
+  "description": "A simple app that calculates the user's BMI (Body Mass Index)"
 }

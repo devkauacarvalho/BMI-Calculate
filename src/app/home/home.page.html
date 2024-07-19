@@ -1,8 +1,17 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      IMC Calculate
+      
+    
+    
+    <img
+        src="../../assets/icon/bmi-icon.png"
+        alt="B.M.I calculate icon"
+        width="30"
+        height="30"
+      />
     </ion-title>
+
   </ion-toolbar>
 </ion-header>
 
@@ -10,19 +19,21 @@
   <ion-list>
     <ion-item>
       <ion-label position="stacked">Digite aqui seu peso:</ion-label>
-      <ion-input type="number" name="personWeight" [(ngModel)]="personWeight"></ion-input>
+      <ion-input type="number" name="personWeight" [(ngModel)]="personWeight" [value]=""></ion-input>
+      <ion-label class="nullWeightErrorMessage" position="stacked"></ion-label>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Digite aqui sua altura em centimetros:</ion-label>
-      <ion-input type="number" onkeypress="if(this.value.length==3) return false;" name="personHeight" [(ngModel)]="personHeight" (input)="validarAlturaInput($event)"></ion-input>
+      <ion-input type="number" onkeypress="if(this.value.length==3) return false;" name="personHeight" [(ngModel)]="personHeight" (input)="heightInputValidate($event)"></ion-input>
+      <ion-label class="nullHeightErrorMessage" position="stacked"></ion-label>
     </ion-item>
   </ion-list>
 
-  <ion-button class="custom-button" expand="block" (click)="calcularIMC()">Calcular</ion-button>
+  <ion-button class="bmiCalculateButton" expand="block" (click)="bmiCalculate()">Calcular</ion-button>
 
-  <ion-card [ngClass]="classificationClass" *ngIf="result">
+  <ion-card [ngClass]="classificationCSS" *ngIf="completeResult">
     <ion-card-content>
-      Seu Indice de Massa Corporal é {{ IMC!.toFixed(2) }}. {{ classification }}
+      Seu Indice de Massa Corporal é {{ BMI!.toFixed(2) }}. {{ classification }}
     </ion-card-content>
   </ion-card>
 </ion-content>
