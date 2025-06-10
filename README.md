@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-BMI Calculate App
-=======
 # Documentação do Projeto: Aplicativo de Cálculo de IMC
 
 ## Sumário
